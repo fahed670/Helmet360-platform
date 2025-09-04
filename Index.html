@@ -3,499 +3,538 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Helmet360 - Construction Platform UAE</title>
-    
-    <!-- Arabic Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
+    <title>Helmet360 - UAE Construction & Contracting Platform</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #f8fafc;
-            transition: all 0.3s ease;
         }
-
-        [dir="rtl"] {
-            font-family: 'Cairo', sans-serif;
-        }
-
-        [dir="rtl"] * {
-            text-align: right;
-        }
-
-        [dir="rtl"] .hero,
-        [dir="rtl"] .stats,
-        [dir="rtl"] .features .container,
-        [dir="rtl"] .pricing .container {
-            text-align: center;
-        }
-
+        
+        /* Header */
         .header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
             position: fixed;
             top: 0;
-            width: 100%;
+            left: 0;
+            right: 0;
             z-index: 1000;
-            padding: 15px 20px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
-
-        .nav {
+        
+        .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
-        [dir="rtl"] .nav {
-            flex-direction: row-reverse;
-        }
-
+        
         .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #2563eb;
-        }
-
-        .nav-buttons {
             display: flex;
-            gap: 10px;
             align-items: center;
-        }
-
-        [dir="rtl"] .nav-buttons {
-            flex-direction: row-reverse;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 500;
+            gap: 10px;
+            font-weight: bold;
+            color: #4A90E2;
             text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s;
+            font-size: 1.5rem;
         }
-
-        .btn-primary {
-            background: #2563eb;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #1d4ed8;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: #2563eb;
-            border: 1px solid #2563eb;
-        }
-
-        .btn-outline:hover {
-            background: #2563eb;
-            color: white;
-        }
-
-        .lang-btn {
-            background: #f3f4f6;
-            color: #374151;
-            border: 1px solid #d1d5db;
-            padding: 8px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #2563eb, #1e40af);
-            color: white;
-            padding: 120px 20px 80px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
+        
+        .logo::before {
+            content: "⛑️";
             font-size: 1.2rem;
-            margin-bottom: 30px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: #4A90E2;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .language-toggle {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .account-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #4A90E2;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .account-btn:hover {
+            background: #357ABD;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.9), rgba(53, 122, 189, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><rect fill="%23f0f8ff" width="1000" height="600"/><g fill="%234A90E2" opacity="0.1"><rect x="100" y="200" width="80" height="200"/><rect x="200" y="150" width="60" height="250"/><rect x="300" y="180" width="70" height="220"/><rect x="500" y="100" width="90" height="300"/><rect x="600" y="120" width="75" height="280"/><rect x="700" y="160" width="65" height="240"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero-badge::before {
+            content: "⛑️";
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            opacity: 0.9;
         }
-
+        
         .hero-buttons {
             display: flex;
-            gap: 15px;
+            gap: 1rem;
             justify-content: center;
-            flex-wrap: wrap;
+            margin-bottom: 3rem;
         }
-
-        .btn-hero {
-            padding: 15px 30px;
+        
+        .btn-primary {
+            background: #4A90E2;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #4A90E2;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-primary:hover {
+            background: #357ABD;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Feature Cards */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 0.5rem;
             font-size: 1.1rem;
         }
-
+        
+        /* Stats Section */
         .stats {
-            background: white;
-            padding: 60px 20px;
-            margin-top: -30px;
-            position: relative;
-            border-radius: 15px 15px 0 0;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 3rem 0;
+            margin-top: 2rem;
         }
-
+        
         .stats-grid {
-            max-width: 1200px;
-            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+            gap: 2rem;
             text-align: center;
+            color: white;
         }
-
-        .stat-item {
-            padding: 20px;
-        }
-
-        .stat-number {
+        
+        .stat-item h3 {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #2563eb;
-            display: block;
+            margin-bottom: 0.5rem;
+            color: #4A90E2;
         }
-
-        .stat-label {
-            color: #6b7280;
-            font-weight: 500;
+        
+        .stat-item p {
+            opacity: 0.9;
         }
-
-        .features {
-            padding: 80px 20px;
+        
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+            background: white;
         }
-
-        .container {
-            max-width: 1200px;
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
             margin: 0 auto;
         }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
+        
+        /* Project Cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
         }
-
-        .section-subtitle {
-            text-align: center;
-            color: #6b7280;
+        
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .project-status {
+            padding: 0.3rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status-trusted {
+            background: #e7f3ff;
+            color: #4A90E2;
+        }
+        
+        .status-untrusted {
+            background: #ffe7e7;
+            color: #e74c3c;
+        }
+        
+        .project-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
             font-size: 1.2rem;
-            margin-bottom: 60px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
         }
-
-        .features-grid {
+        
+        .project-company {
+            color: #4A90E2;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .project-btn {
+            width: 100%;
+            background: #4A90E2;
+            color: white;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .project-btn:hover {
+            background: #357ABD;
+        }
+        
+        /* Company Cards */
+        .companies-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 2rem;
         }
-
-        .feature-card {
+        
+        .company-card {
             background: white;
-            padding: 30px;
-            border-radius: 10px;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
         }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
+        
+        .company-card:hover {
+            transform: translateY(-5px);
         }
-
-        .feature-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
+        
+        .company-icon {
+            width: 60px;
+            height: 60px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
         }
-
-        .feature-text {
-            color: #6b7280;
-            line-height: 1.6;
+        
+        .company-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
         }
-
-        .pricing {
-            background: #f8fafc;
-            padding: 80px 20px;
+        
+        .company-type {
+            color: #4A90E2;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
         }
-
+        
+        .company-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .rating {
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+        
+        /* Pricing */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            gap: 2rem;
+            margin-top: 2rem;
         }
-
+        
         .pricing-card {
             background: white;
-            border-radius: 10px;
-            padding: 40px 30px;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             position: relative;
         }
-
-        .pricing-card.featured {
-            border: 2px solid #2563eb;
-            transform: scale(1.05);
-        }
-
+        
         .pricing-badge {
-            background: #2563eb;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
             position: absolute;
-            top: -12px;
+            top: -10px;
             left: 50%;
             transform: translateX(-50%);
-        }
-
-        .pricing-title {
-            font-size: 1.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 10px;
         }
-
-        .pricing-price {
+        
+        .pricing-card.featured {
+            border: 2px solid #4A90E2;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .price {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #2563eb;
-            margin-bottom: 5px;
+            color: #4A90E2;
+            margin-bottom: 1rem;
         }
-
-        .pricing-period {
-            color: #6b7280;
-            margin-bottom: 30px;
+        
+        .price-unit {
+            font-size: 1rem;
+            color: #666;
         }
-
-        .pricing-features {
+        
+        .features-list {
             list-style: none;
-            margin-bottom: 30px;
-            text-align: left;
+            margin: 2rem 0;
         }
-
-        [dir="rtl"] .pricing-features {
-            text-align: right;
+        
+        .features-list li {
+            padding: 0.5rem 0;
+            color: #666;
         }
-
-        .pricing-features li {
-            padding: 8px 0;
-            border-bottom: 1px solid #f3f4f6;
+        
+        .features-list li::before {
+            content: "✓";
+            color: #4A90E2;
+            font-weight: bold;
+            margin-right: 0.5rem;
         }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 2000;
-        }
-
-        .modal-content {
-            background: white;
-            margin: 50px auto;
-            padding: 30px;
-            border-radius: 10px;
-            max-width: 500px;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #6b7280;
-        }
-
-        [dir="rtl"] .modal-close {
-            right: auto;
-            left: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 16px;
-        }
-
-        [dir="rtl"] .form-input {
-            text-align: right;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: #2563eb;
-        }
-
-        .alert {
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-        }
-
-        .alert-success {
-            background: #d1fae5;
-            color: #065f46;
-        }
-
-        .alert-error {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .badge-verified {
-            background: #dbeafe;
-            color: #1e40af;
-        }
-
-        .badge-unverified {
-            background: #f3f4f6;
-            color: #6b7280;
-        }
-
+        
+        /* Footer */
         .footer {
-            background: #1f2937;
+            background: #2c3e50;
             color: white;
-            padding: 40px 20px;
             text-align: center;
+            padding: 2rem 0;
         }
-
-        .footer p {
-            color: #9ca3af;
-        }
-
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .nav {
-                flex-direction: column;
-                gap: 15px;
+            .nav-links {
+                display: none;
             }
-
-            [dir="rtl"] .nav {
-                flex-direction: column;
-            }
-
+            
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
-
+            
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .features-grid {
+            
+            .projects-grid,
+            .companies-grid {
                 grid-template-columns: 1fr;
             }
-
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-
+            
             .pricing-card.featured {
                 transform: none;
             }
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .spinner {
-            border: 2px solid #f3f3f3;
-            border-top: 2px solid #2563eb;
-            border-radius: 50%;
-            width: 16px;
-            height: 16px;
-            animation: spin 1s linear infinite;
-            display: inline-block;
-            margin-right: 8px;
-        }
-
-        [dir="rtl"] .spinner {
-            margin-right: 0;
-            margin-left: 8px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
-        <nav class="nav">
-            <div class="logo">Helmet360</div>
-            <div class="nav-buttons">
-                <button class="lang-btn" onclick="toggleLanguage()" id="langToggle">عربي</button>
-                <button class="btn btn-outline" onclick="showLogin()" id="loginBtn">Login</button>
-                <button class="btn btn-primary" onclick="showRegister()" id="registerBtn">Register</button>
-                
-                <div class="user-menu hidden" id="userMenu">
-                    <button class="btn btn-outline" onclick="showDashboard()" id="dashboardBtn">Dashboard</button>
-                    <button class="btn btn-outline" onclick="logout()" id="logoutBtn">Logout</button>
+        <nav class="container">
+            <div class="nav">
+                <a href="#" class="logo">Helmet-360</a>
+                <ul class="nav-links">
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#companies">Companies</a></li>
+                    <li><a href="#contracts">Contracts</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#" class="active">Auth Diagnostics</a></li>
+                </ul>
+                <div class="nav-right">
+                    <a href="#" class="language-toggle">عربي</a>
+                    <a href="#" class="account-btn">👤 Account</a>
                 </div>
             </div>
         </nav>
@@ -504,864 +543,250 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1 id="heroTitle">Connect. Build. Grow.</h1>
-            <p id="heroText">The premier platform connecting construction companies, contractors, and suppliers across the UAE. No intermediaries, just direct business connections.</p>
-            
-            <div class="hero-buttons">
-                <button class="btn btn-primary btn-hero" onclick="showRegister()" id="heroBtn1">Start Building Your Network</button>
-                <button class="btn btn-outline btn-hero" style="background: rgba(255,255,255,0.1); border-color: white;" id="heroBtn2">Watch Demo</button>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    Safety First
+                </div>
+                <h1>Construction Project<br>Management<br>For the UAE</h1>
+                <p class="hero-subtitle">Trusted platform connecting main contractors, subcontractors, and construction material companies across the UAE with transparency and compliance.</p>
+                
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary">Get Started</a>
+                    <a href="#" class="btn-secondary">Learn More</a>
+                </div>
+
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Trust System</h3>
+                        <p>Verified contractors and suppliers</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📋</div>
+                        <h3>UAE Compliant</h3>
+                        <p>Following local regulations</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <h3>Arabic & English</h3>
+                        <p>Bilingual platform support</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Automated Management</h3>
+                        <p>Streamlined workflows</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>1,200+</h3>
+                        <p>Active Projects</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>350+</h3>
+                        <p>Registered Companies</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>2,800+</h3>
+                        <p>Completed Contracts</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>7</h3>
+                        <p>UAE Regions Covered</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Statistics Section -->
-    <section class="stats">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <span class="stat-number" id="totalCompanies">150+</span>
-                <div class="stat-label" id="statLabel1">Registered Companies</div>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" id="verifiedCompanies">89</span>
-                <div class="stat-label" id="statLabel2">Verified Companies</div>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" id="activeProjects">234</span>
-                <div class="stat-label" id="statLabel3">Active Projects</div>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" id="contractValue">45M+</span>
-                <div class="stat-label" id="statLabel4">Total Contract Value (AED)</div>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" id="completedProjects">456</span>
-                <div class="stat-label" id="statLabel5">Completed Projects</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
+    <!-- Projects Section -->
+    <section id="projects" class="section">
         <div class="container">
-            <h2 class="section-title" id="featuresTitle">Why Choose Helmet360?</h2>
-            <p class="section-subtitle" id="featuresSubtitle">Built specifically for the UAE construction market with features that matter to your business.</p>
-
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🏗️</div>
-                    <h3 class="feature-title" id="feature1Title">Direct Connections</h3>
-                    <p class="feature-text" id="feature1Text">Connect directly with verified construction companies, contractors, and suppliers without intermediaries.</p>
+            <div class="section-header">
+                <h2>Active Projects in UAE</h2>
+                <p class="section-subtitle">Discover construction opportunities across the Emirates</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3>Dubai Marina Waterfront Complex</h3>
+                            <p class="project-company">Al-Emarat Construction LLC</p>
+                        </div>
+                        <span class="project-status status-trusted">🛡️ Trusted</span>
+                    </div>
+                    <div class="project-details">
+                        <div>📍 Location: Dubai, Dubai</div>
+                        <div>⏱️ Status: Active</div>
+                        <div>📅 Expected End: 15/06/2025</div>
+                        <div>⏳ Remaining Days: 180</div>
+                    </div>
+                    <button class="project-btn">👁️ View Details</button>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">✅</div>
-                    <h3 class="feature-title" id="feature2Title">Verified Companies</h3>
-                    <p class="feature-text" id="feature2Text">All companies go through our verification process to ensure credibility and trustworthiness.</p>
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3>Abu Dhabi Business District Tower</h3>
+                            <p class="project-company">UAE Builders Co</p>
+                        </div>
+                        <span class="project-status status-untrusted">⚠️ Untrusted</span>
+                    </div>
+                    <div class="project-details">
+                        <div>📍 Location: Abu Dhabi, Abu Dhabi</div>
+                        <div>⏱️ Status: Active</div>
+                        <div>📅 Expected End: 01/08/2025</div>
+                        <div>⏳ Remaining Days: 220</div>
+                    </div>
+                    <button class="project-btn">👁️ View Details</button>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">📋</div>
-                    <h3 class="feature-title" id="feature3Title">Project Management</h3>
-                    <p class="feature-text" id="feature3Text">Comprehensive tools to manage your projects from initial posting to completion.</p>
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3>Sharjah Cultural Center Renovation</h3>
+                            <p class="project-company">Heritage Construction</p>
+                        </div>
+                        <span class="project-status status-trusted">🛡️ Trusted</span>
+                    </div>
+                    <div class="project-details">
+                        <div>📍 Location: Sharjah, Sharjah</div>
+                        <div>⏱️ Status: Delayed</div>
+                        <div>📅 Expected End: 10/12/2024</div>
+                        <div>⏳ Remaining Days: -30</div>
+                    </div>
+                    <button class="project-btn">👁️ View Details</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Companies Section -->
+    <section id="companies" class="section" style="background: #f8f9fa;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Trusted Construction Companies</h2>
+                <p class="section-subtitle">Connect with verified contractors and material suppliers across UAE</p>
+            </div>
+            
+            <div class="companies-grid">
+                <div class="company-card">
+                    <div class="company-icon">🏗️</div>
+                    <span class="project-status status-trusted" style="margin-bottom: 1rem;">🛡️ Trusted</span>
+                    <h3>Al-Emarat Construction LLC</h3>
+                    <p class="company-type">Main Contractor</p>
+                    <div class="company-stats">
+                        <div>📍 Dubai</div>
+                        <div>👥 250 Employees</div>
+                        <div>⭐ 4.8/5.0</div>
+                        <div>📁 12 Active Projects</div>
+                    </div>
+                    <button class="project-btn">👁️ View Profile</button>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3 class="feature-title" id="feature4Title">Transparent Pricing</h3>
-                    <p class="feature-text" id="feature4Text">Clear pricing structure with free access for verified companies and affordable plans for others.</p>
+                <div class="company-card">
+                    <div class="company-icon">🏢</div>
+                    <span class="project-status status-untrusted" style="margin-bottom: 1rem;">⚠️ Untrusted</span>
+                    <h3>UAE Builders Co</h3>
+                    <p class="company-type">Main Contractor</p>
+                    <div class="company-stats">
+                        <div>📍 Abu Dhabi</div>
+                        <div>👥 180 Employees</div>
+                        <div>⭐ 4.5/5.0</div>
+                        <div>📁 8 Active Projects</div>
+                    </div>
+                    <button class="project-btn">👁️ View Profile</button>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
-                    <h3 class="feature-title" id="feature5Title">Bilingual Platform</h3>
-                    <p class="feature-text" id="feature5Text">Full support for Arabic and English to serve all businesses in the UAE market.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3 class="feature-title" id="feature6Title">Mobile Optimized</h3>
-                    <p class="feature-text" id="feature6Text">Access your projects and manage your business from anywhere with our mobile-optimized platform.</p>
+                <div class="company-card">
+                    <div class="company-icon">🏛️</div>
+                    <span class="project-status status-trusted" style="margin-bottom: 1rem;">🛡️ Trusted</span>
+                    <h3>Heritage Construction</h3>
+                    <p class="company-type">Subcontractor</p>
+                    <div class="company-stats">
+                        <div>📍 Sharjah</div>
+                        <div>👥 95 Employees</div>
+                        <div>⭐ 4.9/5.0</div>
+                        <div>📁 15 Active Projects</div>
+                    </div>
+                    <button class="project-btn">👁️ View Profile</button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section class="pricing">
+    <section id="pricing" class="section">
         <div class="container">
-            <h2 class="section-title" id="pricingTitle">Choose Your Plan</h2>
-            <p class="section-subtitle" id="pricingSubtitle">Flexible pricing options designed for businesses of all sizes in the UAE construction market.</p>
-
+            <div class="section-header">
+                <h2>Transparent Pricing</h2>
+                <p class="section-subtitle">Built for UAE construction industry with clear, fair pricing based on trust levels</p>
+            </div>
+            
             <div class="pricing-grid">
                 <div class="pricing-card">
-                    <h3 class="pricing-title" id="plan1Title">Verified Companies</h3>
-                    <div class="pricing-price" id="plan1Price">FREE</div>
-                    <div class="pricing-period" id="plan1Period">Always Free</div>
-                    
-                    <ul class="pricing-features">
-                        <li id="plan1Feature1">✓ Post unlimited projects</li>
-                        <li id="plan1Feature2">✓ Access all contracts</li>
-                        <li id="plan1Feature3">✓ Company profile & verification badge</li>
-                        <li id="plan1Feature4">✓ Basic project management tools</li>
-                        <li id="plan1Feature5">✓ Direct messaging</li>
+                    <span class="pricing-badge status-trusted">🛡️ Trusted</span>
+                    <div class="company-icon">🛡️</div>
+                    <h3>Main Contractors</h3>
+                    <div class="price">Free</div>
+                    <ul class="features-list">
+                        <li>Free account access</li>
+                        <li>2-week contract duration</li>
+                        <li>Automatic contract cleanup</li>
+                        <li>No additional fees</li>
+                        <li>Priority support</li>
                     </ul>
-                    
-                    <button class="btn btn-outline" onclick="showRegister()" id="plan1Btn">Get Verified</button>
+                    <button class="project-btn">Get Started</button>
                 </div>
 
                 <div class="pricing-card featured">
-                    <div class="pricing-badge" id="popularBadge">Most Popular</div>
-                    <h3 class="pricing-title" id="plan2Title">Premium Plan</h3>
-                    <div class="pricing-price">299</div>
-                    <div class="pricing-period" id="plan2Period">AED / month</div>
-                    
-                    <ul class="pricing-features">
-                        <li id="plan2Feature1">✓ Everything in Free Plan</li>
-                        <li id="plan2Feature2">✓ Featured project listings</li>
-                        <li id="plan2Feature3">✓ Advanced analytics & reporting</li>
-                        <li id="plan2Feature4">✓ Priority customer support</li>
-                        <li id="plan2Feature5">✓ Enhanced company profile</li>
-                        <li id="plan2Feature6">✓ Unlimited file uploads</li>
+                    <span class="pricing-badge status-untrusted">⚠️ Untrusted</span>
+                    <div class="company-icon">🏢</div>
+                    <h3>Main Contractors</h3>
+                    <div class="price">200 AED<span class="price-unit">/month</span></div>
+                    <ul class="features-list">
+                        <li>200 AED monthly subscription</li>
+                        <li>200 AED per subcontractor</li>
+                        <li>50 AED per announcement</li>
+                        <li>5000 AED per delivered project</li>
+                        <li>Standard support</li>
                     </ul>
-                    
-                    <button class="btn btn-primary" onclick="showRegister()" id="plan2Btn">Start Premium</button>
+                    <button class="project-btn">Get Started</button>
                 </div>
 
                 <div class="pricing-card">
-                    <h3 class="pricing-title" id="plan3Title">Basic Plan</h3>
-                    <div class="pricing-price">149</div>
-                    <div class="pricing-period" id="plan3Period">AED / month</div>
-                    
-                    <ul class="pricing-features">
-                        <li id="plan3Feature1">✓ Post up to 10 projects/month</li>
-                        <li id="plan3Feature2">✓ Access to all contracts</li>
-                        <li id="plan3Feature3">✓ Basic company profile</li>
-                        <li id="plan3Feature4">✓ Standard project tools</li>
-                        <li id="plan3Feature5">✓ Email support</li>
+                    <span class="pricing-badge" style="background: #e7f3ff; color: #4A90E2;">👑 Materials</span>
+                    <div class="company-icon">👑</div>
+                    <h3>Construction Material Companies</h3>
+                    <div class="price">50 AED<span class="price-unit">/announcement</span></div>
+                    <ul class="features-list">
+                        <li>50 AED per announcement (3 days)</li>
+                        <li>200 AED monthly subscription</li>
+                        <li>Project visibility</li>
+                        <li>Contract opportunities</li>
+                        <li>UAE-wide reach</li>
                     </ul>
-                    
-                    <button class="btn btn-outline" onclick="showRegister()" id="plan3Btn">Start Basic</button>
+                    <button class="project-btn">Get Started</button>
                 </div>
             </div>
+            
+            <p style="text-align: center; margin-top: 2rem; color: #666; font-size: 0.9rem;">
+                * All prices are in UAE Dirhams (AED). Trust status is determined by compliance history and verification.
+            </p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <h3>Helmet360</h3>
-            <p id="footerText">© 2025 Helmet360. All rights reserved. Made for the UAE construction industry.</p>
+            <p>&copy; 2024 Helmet360. UAE Construction & Contracting Platform - Bilingual (Arabic/English)</p>
         </div>
     </footer>
-
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('loginModal')">&times;</span>
-            <h2 id="loginTitle">Login to Your Account</h2>
-            <div id="loginAlert"></div>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label class="form-label" id="loginEmailLabel">Email</label>
-                    <input type="email" class="form-input" id="loginEmail" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" id="loginPasswordLabel">Password</label>
-                    <input type="password" class="form-input" id="loginPassword" required>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    <span class="spinner hidden" id="loginSpinner"></span>
-                    <span id="loginText">Login</span>
-                </button>
-            </form>
-            <p style="text-align: center; margin-top: 20px;" id="loginSignupText">
-                Don't have an account? <a href="#" onclick="showRegister(); closeModal('loginModal')" style="color: #2563eb;" id="loginSignupLink">Register here</a>
-            </p>
-        </div>
-    </div>
-
-    <!-- Register Modal -->
-    <div class="modal" id="registerModal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('registerModal')">&times;</span>
-            <h2 id="registerTitle">Create Your Account</h2>
-            <div id="registerAlert"></div>
-            <form id="registerForm">
-                <div class="form-group">
-                    <label class="form-label" id="companyNameLabel">Company Name</label>
-                    <input type="text" class="form-input" id="companyName" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" id="businessTypeLabel">Business Type</label>
-                    <select class="form-input" id="businessType" required>
-                        <option value="" id="businessTypeOption0">Select business type</option>
-                        <option value="construction" id="businessTypeOption1">Construction Company</option>
-                        <option value="contracting" id="businessTypeOption2">Contracting Company</option>
-                        <option value="materials" id="businessTypeOption3">Materials Supplier</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" id="contactPersonLabel">Contact Person</label>
-                    <input type="text" class="form-input" id="contactPerson" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" id="phoneLabel">Phone</label>
-                    <input type="tel" class="form-input" id="phone" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" id="emailLabel">Email</label>
-                    <input type="email" class="form-input" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" id="passwordLabel">Password</label>
-                    <input type="password" class="form-input" id="password" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" id="cityLabel">City</label>
-                    <select class="form-input" id="city">
-                        <option value="Abu Dhabi">Abu Dhabi</option>
-                        <option value="Dubai">Dubai</option>
-                        <option value="Sharjah">Sharjah</option>
-                        <option value="Ajman">Ajman</option>
-                        <option value="Ras Al Khaimah">Ras Al Khaimah</option>
-                        <option value="Fujairah">Fujairah</option>
-                        <option value="Umm Al Quwain">Umm Al Quwain</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    <span class="spinner hidden" id="registerSpinner"></span>
-                    <span id="registerText">Create Account</span>
-                </button>
-            </form>
-            <p style="text-align: center; margin-top: 20px;" id="registerLoginText">
-                Already have an account? <a href="#" onclick="showLogin(); closeModal('registerModal')" style="color: #2563eb;" id="registerLoginLink">Login here</a>
-            </p>
-        </div>
-    </div>
-
-    <!-- Dashboard Modal -->
-    <div class="modal" id="dashboardModal">
-        <div class="modal-content" style="max-width: 800px;">
-            <span class="modal-close" onclick="closeModal('dashboardModal')">&times;</span>
-            <h2 id="dashboardTitle">Company Dashboard</h2>
-            <div id="dashboardContent">
-                <div style="text-align: center; padding: 40px;">
-                    <div class="spinner"></div>
-                    <span id="dashboardLoading">Loading dashboard...</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Supabase Configuration
-        const SUPABASE_URL = 'https://eaqptoghojfgrtqeoxog.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVhcXB0b2dob2pmZ3J0cWVveG9nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5NzE5MTksImV4cCI6MjA3MjU0NzkxOX0.A9PxMUkNJjwJmfT-HNCZjYytJW_l4_vk3hwZJQ2LMd8';
-        
-        // Initialize Supabase with fallback
-        let supabase = null;
-        let isOfflineMode = false;
-        
-        try {
-            if (window.supabase && typeof window.supabase.createClient === 'function') {
-                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-            } else {
-                throw new Error('Supabase library not loaded');
-            }
-        } catch (error) {
-            console.warn('Supabase not available, running in offline mode:', error);
-            isOfflineMode = true;
-        }
-
-        // Global variables
-        let currentUser = null;
-        let isArabic = false;
-
-        // Complete translation object
-        const translations = {
-            // Navigation
-            loginBtn: { en: 'Login', ar: 'تسجيل الدخول' },
-            registerBtn: { en: 'Register', ar: 'التسجيل' },
-            dashboardBtn: { en: 'Dashboard', ar: 'لوحة التحكم' },
-            logoutBtn: { en: 'Logout', ar: 'تسجيل الخروج' },
-            
-            // Hero Section
-            heroTitle: { en: 'Connect. Build. Grow.', ar: 'اتصل. ابني. انمو.' },
-            heroText: { en: 'The premier platform connecting construction companies, contractors, and suppliers across the UAE. No intermediaries, just direct business connections.', ar: 'المنصة الرائدة لربط شركات البناء والمقاولين والموردين في دولة الإمارات العربية المتحدة. بدون وسطاء، فقط اتصالات تجارية مباشرة.' },
-            heroBtn1: { en: 'Start Building Your Network', ar: 'ابدأ ببناء شبكتك' },
-            heroBtn2: { en: 'Watch Demo', ar: 'شاهد العرض التوضيحي' },
-            
-            // Statistics
-            statLabel1: { en: 'Registered Companies', ar: 'الشركات المسجلة' },
-            statLabel2: { en: 'Verified Companies', ar: 'الشركات الموثقة' },
-            statLabel3: { en: 'Active Projects', ar: 'المشاريع النشطة' },
-            statLabel4: { en: 'Total Contract Value (AED)', ar: 'إجمالي قيمة العقود (درهم)' },
-            statLabel5: { en: 'Completed Projects', ar: 'المشاريع المكتملة' },
-            
-            // Features Section
-            featuresTitle: { en: 'Why Choose Helmet360?', ar: 'لماذا تختار خوذة360؟' },
-            featuresSubtitle: { en: 'Built specifically for the UAE construction market with features that matter to your business.', ar: 'مصمم خصيصاً لسوق البناء في دولة الإمارات مع مميزات تهم عملك.' },
-            
-            feature1Title: { en: 'Direct Connections', ar: 'اتصالات مباشرة' },
-            feature1Text: { en: 'Connect directly with verified construction companies, contractors, and suppliers without intermediaries.', ar: 'اتصل مباشرة مع شركات البناء والمقاولين والموردين الموثقين بدون وسطاء.' },
-            
-            feature2Title: { en: 'Verified Companies', ar: 'شركات موثقة' },
-            feature2Text: { en: 'All companies go through our verification process to ensure credibility and trustworthiness.', ar: 'جميع الشركات تمر بعملية التحقق لدينا لضمان المصداقية والثقة.' },
-            
-            feature3Title: { en: 'Project Management', ar: 'إدارة المشاريع' },
-            feature3Text: { en: 'Comprehensive tools to manage your projects from initial posting to completion.', ar: 'أدوات شاملة لإدارة مشاريعك من النشر الأولي إلى الإكمال.' },
-            
-            feature4Title: { en: 'Transparent Pricing', ar: 'تسعير شفاف' },
-            feature4Text: { en: 'Clear pricing structure with free access for verified companies and affordable plans for others.', ar: 'هيكل تسعير واضح مع وصول مجاني للشركات الموثقة وخطط ميسورة التكلفة للآخرين.' },
-            
-            feature5Title: { en: 'Bilingual Platform', ar: 'منصة ثنائية اللغة' },
-            feature5Text: { en: 'Full support for Arabic and English to serve all businesses in the UAE market.', ar: 'دعم كامل للغة العربية والإنجليزية لخدمة جميع الأعمال في السوق الإماراتي.' },
-            
-            feature6Title: { en: 'Mobile Optimized', ar: 'محسّن للجوال' },
-            feature6Text: { en: 'Access your projects and manage your business from anywhere with our mobile-optimized platform.', ar: 'الوصول إلى مشاريعك وإدارة عملك من أي مكان مع منصتنا المحسّنة للجوال.' },
-            
-            // Pricing Section
-            pricingTitle: { en: 'Choose Your Plan', ar: 'اختر خطتك' },
-            pricingSubtitle: { en: 'Flexible pricing options designed for businesses of all sizes in the UAE construction market.', ar: 'خيارات تسعير مرنة مصممة للأعمال من جميع الأحجام في سوق البناء الإماراتي.' },
-            
-            plan1Title: { en: 'Verified Companies', ar: 'الشركات الموثقة' },
-            plan1Price: { en: 'FREE', ar: 'مجاني' },
-            plan1Period: { en: 'Always Free', ar: 'مجاني دائماً' },
-            plan1Feature1: { en: '✓ Post unlimited projects', ar: '✓ نشر مشاريع غير محدودة' },
-            plan1Feature2: { en: '✓ Access all contracts', ar: '✓ الوصول لجميع العقود' },
-            plan1Feature3: { en: '✓ Company profile & verification badge', ar: '✓ ملف الشركة وشارة التوثيق' },
-            plan1Feature4: { en: '✓ Basic project management tools', ar: '✓ أدوات إدارة المشاريع الأساسية' },
-            plan1Feature5: { en: '✓ Direct messaging', ar: '✓ الرسائل المباشرة' },
-            plan1Btn: { en: 'Get Verified', ar: 'احصل على التوثيق' },
-            
-            plan2Title: { en: 'Premium Plan', ar: 'الخطة المميزة' },
-            plan2Period: { en: 'AED / month', ar: 'درهم / شهر' },
-            plan2Feature1: { en: '✓ Everything in Free Plan', ar: '✓ كل شيء في الخطة المجانية' },
-            plan2Feature2: { en: '✓ Featured project listings', ar: '✓ قوائم المشاريع المميزة' },
-            plan2Feature3: { en: '✓ Advanced analytics & reporting', ar: '✓ التحليلات والتقارير المتقدمة' },
-            plan2Feature4: { en: '✓ Priority customer support', ar: '✓ دعم العملاء ذو الأولوية' },
-            plan2Feature5: { en: '✓ Enhanced company profile', ar: '✓ ملف الشركة المحسّن' },
-            plan2Feature6: { en: '✓ Unlimited file uploads', ar: '✓ تحميل ملفات غير محدود' },
-            plan2Btn: { en: 'Start Premium', ar: 'ابدأ المميزة' },
-            
-            plan3Title: { en: 'Basic Plan', ar: 'الخطة الأساسية' },
-            plan3Period: { en: 'AED / month', ar: 'درهم / شهر' },
-            plan3Feature1: { en: '✓ Post up to 10 projects/month', ar: '✓ نشر حتى 10 مشاريع/شهر' },
-            plan3Feature2: { en: '✓ Access to all contracts', ar: '✓ الوصول لجميع العقود' },
-            plan3Feature3: { en: '✓ Basic company profile', ar: '✓ ملف الشركة الأساسي' },
-            plan3Feature4: { en: '✓ Standard project tools', ar: '✓ أدوات المشاريع المعيارية' },
-            plan3Feature5: { en: '✓ Email support', ar: '✓ دعم البريد الإلكتروني' },
-            plan3Btn: { en: 'Start Basic', ar: 'ابدأ الأساسية' },
-            
-            popularBadge: { en: 'Most Popular', ar: 'الأكثر شعبية' },
-            
-            // Footer
-            footerText: { en: '© 2025 Helmet360. All rights reserved. Made for the UAE construction industry.', ar: '© 2025 خوذة360. جميع الحقوق محفوظة. مصنوع لصناعة البناء في دولة الإمارات.' },
-            
-            // Login Modal
-            loginTitle: { en: 'Login to Your Account', ar: 'تسجيل الدخول لحسابك' },
-            loginEmailLabel: { en: 'Email', ar: 'البريد الإلكتروني' },
-            loginPasswordLabel: { en: 'Password', ar: 'كلمة المرور' },
-            loginText: { en: 'Login', ar: 'تسجيل الدخول' },
-            loginSignupText: { en: "Don't have an account?", ar: 'ليس لديك حساب؟' },
-            loginSignupLink: { en: 'Register here', ar: 'سجل هنا' },
-            
-            // Register Modal
-            registerTitle: { en: 'Create Your Account', ar: 'إنشاء حسابك' },
-            companyNameLabel: { en: 'Company Name', ar: 'اسم الشركة' },
-            businessTypeLabel: { en: 'Business Type', ar: 'نوع العمل' },
-            businessTypeOption0: { en: 'Select business type', ar: 'اختر نوع العمل' },
-            businessTypeOption1: { en: 'Construction Company', ar: 'شركة بناء' },
-            businessTypeOption2: { en: 'Contracting Company', ar: 'شركة مقاولات' },
-            businessTypeOption3: { en: 'Materials Supplier', ar: 'مورد مواد' },
-            contactPersonLabel: { en: 'Contact Person', ar: 'الشخص المسؤول' },
-            phoneLabel: { en: 'Phone', ar: 'الهاتف' },
-            emailLabel: { en: 'Email', ar: 'البريد الإلكتروني' },
-            passwordLabel: { en: 'Password', ar: 'كلمة المرور' },
-            cityLabel: { en: 'City', ar: 'المدينة' },
-            registerText: { en: 'Create Account', ar: 'إنشاء حساب' },
-            registerLoginText: { en: 'Already have an account?', ar: 'لديك حساب بالفعل؟' },
-            registerLoginLink: { en: 'Login here', ar: 'سجل دخول هنا' },
-            
-            // Dashboard Modal
-            dashboardTitle: { en: 'Company Dashboard', ar: 'لوحة تحكم الشركة' },
-            dashboardLoading: { en: 'Loading dashboard...', ar: 'تحميل لوحة التحكم...' }
-        };
-
-        // Safe element update function
-        function updateElement(id, text) {
-            try {
-                const element = document.getElementById(id);
-                if (element) {
-                    element.textContent = text;
-                }
-            } catch (error) {
-                console.error(`Error updating element ${id}:`, error);
-            }
-        }
-
-        // Update all text based on language
-        function updateAllText() {
-            const lang = isArabic ? 'ar' : 'en';
-            
-            // Update all elements with translations
-            Object.keys(translations).forEach(key => {
-                if (translations[key][lang]) {
-                    updateElement(key, translations[key][lang]);
-                }
-            });
-        }
-
-        // Language toggle function
-        function toggleLanguage() {
-            isArabic = !isArabic;
-            const html = document.documentElement;
-            const langBtn = document.getElementById('langToggle');
-            
-            if (isArabic) {
-                html.setAttribute('dir', 'rtl');
-                html.setAttribute('lang', 'ar');
-                if (langBtn) langBtn.textContent = 'English';
-            } else {
-                html.setAttribute('dir', 'ltr');
-                html.setAttribute('lang', 'en');
-                if (langBtn) langBtn.textContent = 'عربي';
-            }
-            
-            // Update all text
-            setTimeout(updateAllText, 50);
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            try {
-                checkUserSession();
-                loadStats();
-            } catch (error) {
-                console.error('Initialization error:', error);
-            }
-        });
-
-        // Check user session with fallback
-        async function checkUserSession() {
-            if (!supabase || isOfflineMode) {
-                console.log('Running in offline mode - session check skipped');
-                return;
-            }
-            
-            try {
-                const { data: { session } } = await supabase.auth.getSession();
-                if (session) {
-                    currentUser = session.user;
-                    updateUIForLoggedInUser();
-                }
-            } catch (error) {
-                console.warn('Session check failed, switching to offline mode:', error);
-                isOfflineMode = true;
-            }
-        }
-
-        // Update UI for logged in user
-        function updateUIForLoggedInUser() {
-            try {
-                const loginBtn = document.getElementById('loginBtn');
-                const registerBtn = document.getElementById('registerBtn');
-                const userMenu = document.getElementById('userMenu');
-                
-                if (loginBtn) loginBtn.classList.add('hidden');
-                if (registerBtn) registerBtn.classList.add('hidden');
-                if (userMenu) userMenu.classList.remove('hidden');
-            } catch (error) {
-                console.error('UI update error:', error);
-            }
-        }
-
-        // Update UI for logged out user
-        function updateUIForLoggedOutUser() {
-            try {
-                const loginBtn = document.getElementById('loginBtn');
-                const registerBtn = document.getElementById('registerBtn');
-                const userMenu = document.getElementById('userMenu');
-                
-                if (loginBtn) loginBtn.classList.remove('hidden');
-                if (registerBtn) registerBtn.classList.remove('hidden');
-                if (userMenu) userMenu.classList.add('hidden');
-            } catch (error) {
-                console.error('UI update error:', error);
-            }
-        }
-
-        // Modal functions
-        function showModal(modalId) {
-            try {
-                const modal = document.getElementById(modalId);
-                if (modal) {
-                    modal.style.display = 'block';
-                }
-            } catch (error) {
-                console.error('Show modal error:', error);
-            }
-        }
-
-        function closeModal(modalId) {
-            try {
-                const modal = document.getElementById(modalId);
-                if (modal) {
-                    modal.style.display = 'none';
-                }
-            } catch (error) {
-                console.error('Close modal error:', error);
-            }
-        }
-
-        function showLogin() {
-            showModal('loginModal');
-        }
-
-        function showRegister() {
-            showModal('registerModal');
-        }
-
-        function showDashboard() {
-            showModal('dashboardModal');
-            loadDashboard();
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-            }
-        }
-
-        // Login form handler
-        document.addEventListener('DOMContentLoaded', function() {
-            const loginForm = document.getElementById('loginForm');
-            if (loginForm) {
-                loginForm.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    
-                    const email = document.getElementById('loginEmail').value;
-                    const password = document.getElementById('loginPassword').value;
-                    const spinner = document.getElementById('loginSpinner');
-                    const loginText = document.getElementById('loginText');
-                    const alertDiv = document.getElementById('loginAlert');
-
-                    try {
-                        if (spinner) spinner.classList.remove('hidden');
-                        if (loginText) loginText.textContent = isArabic ? 'جاري تسجيل الدخول...' : 'Logging in...';
-
-                        if (!supabase || isOfflineMode) {
-                            // Offline mode demo
-                            setTimeout(() => {
-                                currentUser = { 
-                                    id: 'demo-user', 
-                                    email: email,
-                                    companyData: {
-                                        company_name: 'Demo Company',
-                                        business_type: 'construction',
-                                        city: 'Abu Dhabi',
-                                        is_verified: true,
-                                        created_at: new Date().toISOString()
-                                    }
-                                };
-                                updateUIForLoggedInUser();
-                                closeModal('loginModal');
-                                
-                                if (alertDiv) {
-                                    alertDiv.innerHTML = `<div class="alert alert-success">${isArabic ? 'تم تسجيل الدخول بنجاح! (وضع العرض التوضيحي)' : 'Login successful! (Demo Mode)'}</div>`;
-                                }
-                            }, 1000);
-                            return;
-                        }
-
-                        const { data, error } = await supabase.auth.signInWithPassword({
-                            email: email,
-                            password: password,
-                        });
-
-                        if (error) throw error;
-
-                        currentUser = data.user;
-                        updateUIForLoggedInUser();
-                        closeModal('loginModal');
-                        
-                        if (alertDiv) {
-                            alertDiv.innerHTML = `<div class="alert alert-success">${isArabic ? 'تم تسجيل الدخول بنجاح!' : 'Login successful!'}</div>`;
-                        }
-                        
-                    } catch (error) {
-                        if (alertDiv) {
-                            alertDiv.innerHTML = `<div class="alert alert-error">${isArabic ? 'خطأ في تسجيل الدخول: ' : 'Login error: '}${error.message}</div>`;
-                        }
-                    } finally {
-                        if (spinner) spinner.classList.add('hidden');
-                        if (loginText) loginText.textContent = isArabic ? 'تسجيل الدخول' : 'Login';
-                    }
-                });
-            }
-
-            // Register form handler
-            const registerForm = document.getElementById('registerForm');
-            if (registerForm) {
-                registerForm.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    
-                    const formData = {
-                        email: document.getElementById('email').value,
-                        password: document.getElementById('password').value,
-                        companyName: document.getElementById('companyName').value,
-                        businessType: document.getElementById('businessType').value,
-                        contactPerson: document.getElementById('contactPerson').value,
-                        phone: document.getElementById('phone').value,
-                        city: document.getElementById('city').value,
-                    };
-
-                    const spinner = document.getElementById('registerSpinner');
-                    const registerText = document.getElementById('registerText');
-                    const alertDiv = document.getElementById('registerAlert');
-
-                    try {
-                        if (spinner) spinner.classList.remove('hidden');
-                        if (registerText) registerText.textContent = isArabic ? 'جاري إنشاء الحساب...' : 'Creating account...';
-
-                        if (!supabase || isOfflineMode) {
-                            // Offline mode demo
-                            setTimeout(() => {
-                                if (alertDiv) {
-                                    alertDiv.innerHTML = `<div class="alert alert-success">${isArabic ? 'تم إنشاء الحساب بنجاح! (وضع العرض التوضيحي)' : 'Account created successfully! (Demo Mode)'}</div>`;
-                                }
-                                this.reset();
-                            }, 1500);
-                            return;
-                        }
-
-                        const { data: authData, error: authError } = await supabase.auth.signUp({
-                            email: formData.email,
-                            password: formData.password,
-                        });
-
-                        if (authError) throw authError;
-
-                        if (authData.user) {
-                            const { error: profileError } = await supabase
-                                .from('companies')
-                                .insert([
-                                    {
-                                        id: authData.user.id,
-                                        company_name: formData.companyName,
-                                        business_type: formData.businessType,
-                                        contact_person: formData.contactPerson,
-                                        phone: formData.phone,
-                                        email: formData.email,
-                                        city: formData.city,
-                                    }
-                                ]);
-
-                            if (profileError) throw profileError;
-
-                            if (alertDiv) {
-                                alertDiv.innerHTML = `<div class="alert alert-success">${isArabic ? 'تم إنشاء الحساب بنجاح! تحقق من بريدك الإلكتروني.' : 'Account created successfully! Check your email for verification.'}</div>`;
-                            }
-                            this.reset();
-                        }
-                        
-                    } catch (error) {
-                        if (alertDiv) {
-                            alertDiv.innerHTML = `<div class="alert alert-error">${isArabic ? 'خطأ في التسجيل: ' : 'Registration error: '}${error.message}</div>`;
-                        }
-                    } finally {
-                        if (spinner) spinner.classList.add('hidden');
-                        if (registerText) registerText.textContent = isArabic ? 'إنشاء حساب' : 'Create Account';
-                    }
-                });
-            }
-        });
-
-        // Logout function
-        async function logout() {
-            if (!supabase) return;
-            
-            try {
-                await supabase.auth.signOut();
-                currentUser = null;
-                updateUIForLoggedOutUser();
-            } catch (error) {
-                console.error('Logout error:', error);
-            }
-        }
-
-        // Load statistics with fallback
-        async function loadStats() {
-            if (!supabase || isOfflineMode) {
-                // Demo statistics for offline mode
-                updateElement('totalCompanies', '150+');
-                updateElement('verifiedCompanies', '89');
-                updateElement('activeProjects', '234');
-                updateElement('contractValue', '45M+');
-                updateElement('completedProjects', '456');
-                return;
-            }
-            
-            try {
-                const { data, error } = await supabase
-                    .from('platform_stats')
-                    .select('*')
-                    .eq('id', 1)
-                    .single();
-
-                if (data) {
-                    updateElement('totalCompanies', data.total_companies + '+');
-                    updateElement('verifiedCompanies', data.verified_companies.toString());
-                    updateElement('activeProjects', data.active_projects.toString());
-                    updateElement('contractValue', formatMoney(data.total_contract_value));
-                    updateElement('completedProjects', data.completed_projects.toString());
-                } else {
-                    // Fallback to demo data
-                    updateElement('totalCompanies', '150+');
-                    updateElement('verifiedCompanies', '89');
-                    updateElement('activeProjects', '234');
-                    updateElement('contractValue', '45M+');
-                    updateElement('completedProjects', '456');
-                }
-            } catch (error) {
-                console.warn('Stats loading failed, using demo data:', error);
-                isOfflineMode = true;
-                updateElement('totalCompanies', '150+');
-                updateElement('verifiedCompanies', '89');
-                updateElement('activeProjects', '234');
-                updateElement('contractValue', '45M+');
-                updateElement('completedProjects', '456');
-            }
-        }
-
-        // Format money
-        function formatMoney(value) {
-            if (value >= 1000000) {
-                return (value / 1000000).toFixed(0) + 'M+';
-            } else if (value >= 1000) {
-                return (value / 1000).toFixed(0) + 'K+';
-            }
-            return value.toString();
-        }
-
-        // Load dashboard with fallback
-        async function loadDashboard() {
-            const content = document.getElementById('dashboardContent');
-            
-            if (!currentUser) {
-                if (content) {
-                    content.innerHTML = `<div class="alert alert-error">${isArabic ? 'يرجى تسجيل الدخول أولاً' : 'Please login first'}</div>`;
-                }
-                return;
-            }
-
-            if (!supabase || isOfflineMode) {
-                // Demo dashboard for offline mode
-                const companyData = currentUser.companyData || {
-                    company_name: 'Demo Construction Company',
-                    business_type: 'construction',
-                    city: 'Abu Dhabi',
-                    is_verified: true,
-                    created_at: new Date().toISOString()
-                };
-
-                const verifiedBadge = companyData.is_verified 
-                    ? '<span class="badge badge-verified">✓ Verified</span>' 
-                    : '<span class="badge badge-unverified">⚠ Unverified</span>';
-
-                if (content) {
-                    content.innerHTML = `
-                        <div style="text-align: left;">
-                            <h3>${companyData.company_name} ${verifiedBadge}</h3>
-                            <p><strong>${isArabic ? 'نوع العمل:' : 'Business Type:'}</strong> ${companyData.business_type}</p>
-                            <p><strong>${isArabic ? 'المدينة:' : 'City:'}</strong> ${companyData.city}</p>
-                            <p><strong>${isArabic ? 'تاريخ التسجيل:' : 'Member Since:'}</strong> ${new Date(companyData.created_at).toLocaleDateString()}</p>
-                            
-                            <hr style="margin: 20px 0;">
-                            
-                            <div class="alert alert-success">${isArabic ? 'وضع العرض التوضيحي - البيانات تجريبية' : 'Demo Mode - Sample Data'}</div>
-                            
-                            <h4>${isArabic ? 'مشاريعك الأخيرة:' : 'Your Recent Projects:'}</h4>
-                            <div style="background: #f8fafc; padding: 15px; border-radius: 8px; margin-bottom: 10px;">
-                                <strong>${isArabic ? 'مشروع سكني في أبوظبي' : 'Residential Project in Abu Dhabi'}</strong>
-                                <p>${isArabic ? 'مشروع بناء مجمع سكني حديث في منطقة الخالدية...' : 'Modern residential complex construction project in Khalidiya area...'}</p>
-                                <small>${isArabic ? 'أنشئ في:' : 'Created:'} ${new Date().toLocaleDateString()}</small>
-                            </div>
-                            <div style="background: #f8fafc; padding: 15px; border-radius: 8px; margin-bottom: 10px;">
-                                <strong>${isArabic ? 'مشروع تجاري في دبي' : 'Commercial Project in Dubai'}</strong>
-                                <p>${isArabic ? 'بناء مركز تجاري متعدد الاستخدامات في منطقة الأعمال...' : 'Multi-use commercial center construction in business district...'}</p>
-                                <small>${isArabic ? 'أنشئ في:' : 'Created:'} ${new Date(Date.now() - 86400000).toLocaleDateString()}</small>
-                            </div>
-                            
-                            <div style="margin-top: 20px;">
-                                <button class="btn btn-primary" onclick="alert('${isArabic ? 'قريباً - إضافة مشروع جديد' : 'Coming soon - Add new project'}')">${isArabic ? 'إضافة مشروع جديد' : 'Add New Project'}</button>
-                            </div>
-                        </div>
-                    `;
-                }
-                return;
-            }
-
-            try {
-                const { data: companyData, error: companyError } = await supabase
-                    .from('companies')
-                    .select('*')
-                    .eq('id', currentUser.id)
-                    .single();
-
-                if (companyError) throw companyError;
-
-                const { data: projects, error: projectsError } = await supabase
-                    .from('projects')
-                    .select('*')
-                    .eq('company_id', currentUser.id)
-                    .order('created_at', { ascending: false })
-                    .limit(5);
-
-                if (projectsError) throw projectsError;
-
-                const verifiedBadge = companyData.is_verified 
-                    ? '<span class="badge badge-verified">✓ Verified</span>' 
-                    : '<span class="badge badge-unverified">⚠ Unverified</span>';
-
-                if (content) {
-                    content.innerHTML = `
-                        <div style="text-align: left;">
-                            <h3>${companyData.company_name} ${verifiedBadge}</h3>
-                            <p><strong>${isArabic ? 'نوع العمل:' : 'Business Type:'}</strong> ${companyData.business_type}</p>
-                            <p><strong>${isArabic ? 'المدينة:' : 'City:'}</strong> ${companyData.city}</p>
-                            <p><strong>${isArabic ? 'تاريخ التسجيل:' : 'Member Since:'}</strong> ${new Date(companyData.created_at).toLocaleDateString()}</p>
-                            
-                            <hr style="margin: 20px 0;">
-                            
-                            <h4>${isArabic ? 'مشاريعك الأخيرة:' : 'Your Recent Projects:'}</h4>
-                            ${projects && projects.length > 0 ? 
-                                projects.map(project => `
-                                    <div style="background: #f8fafc; padding: 15px; border-radius: 8px; margin-bottom: 10px;">
-                                        <strong>${project.title}</strong>
-                                        <p>${project.description ? project.description.substring(0, 100) + '...' : (isArabic ? 'لا يوجد وصف' : 'No description')}</p>
-                                        <small>${isArabic ? 'أنشئ في:' : 'Created:'} ${new Date(project.created_at).toLocaleDateString()}</small>
-                                    </div>
-                                `).join('') :
-                                `<p>${isArabic ? 'لا توجد مشاريع حتى الآن' : 'No projects yet'}</p>`
-                            }
-                            
-                            <div style="margin-top: 20px;">
-                                <button class="btn btn-primary" onclick="alert('${isArabic ? 'قريباً - إضافة مشروع جديد' : 'Coming soon - Add new project'}')">${isArabic ? 'إضافة مشروع جديد' : 'Add New Project'}</button>
-                            </div>
-                        </div>
-                    `;
-                }
-                
-            } catch (error) {
-                if (content) {
-                    content.innerHTML = `<div class="alert alert-error">${isArabic ? 'خطأ في تحميل البيانات' : 'Error loading dashboard data'}</div>`;
-                }
-                console.error('Dashboard loading error:', error);
-                isOfflineMode = true;
-            }
-        }
-    </script>
 </body>
 </html>
